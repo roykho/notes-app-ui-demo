@@ -8,8 +8,8 @@ const NoteCard: React.FC<NoteCardProps> = ({ note }) => {
     const [error, setError] = useState<string>('');
     const [showEditNote, setShowEditNote] = useState(false);
     const [showFullContent, setShowFullContent] = useState(false);
-    
-    const deleteHandler = async (id: string) => {        
+
+    const deleteHandler = async (id: string) => {
         if (window.confirm('Are you sure you want to delete this note?')) {
             try {
                 setError('');
@@ -54,7 +54,7 @@ const NoteCard: React.FC<NoteCardProps> = ({ note }) => {
                 <h3 className="text-xl font-semibold text-gray-800 mb-2 line-clamp-2">
                     {note.title}
                 </h3>
-                <div className="text-gray-600 text-sm">
+                <div className="text-gray-600 text-base">
                     <p className={`whitespace-pre-wrap ${showFullContent ? '' : 'line-clamp-4'}`}>
                         {note.content}
                     </p>
@@ -68,7 +68,7 @@ const NoteCard: React.FC<NoteCardProps> = ({ note }) => {
                     )}
                 </div>
             </div>
-            
+
             {note.tags && note.tags.length > 0 && (
                 <div className="flex flex-wrap gap-2 mb-4">
                     {note.tags.map((tag, index) => (
@@ -81,10 +81,10 @@ const NoteCard: React.FC<NoteCardProps> = ({ note }) => {
                     ))}
                 </div>
             )}
-            
+
             <div className="flex justify-between items-center pt-4 border-t border-gray-100">
                 <div className="flex space-x-2">
-                    <button 
+                    <button
                         className="cursor-pointer text-blue-600 hover:text-blue-800 text-sm font-medium transition-colors"
                         onClick={() => setShowEditNote(true)}
                     >
@@ -98,23 +98,23 @@ const NoteCard: React.FC<NoteCardProps> = ({ note }) => {
                     </button>
                 </div>
                 <div className="text-right">
-                    <div className="text-xs text-gray-400">
+                    <div className="text-xs text-black">
                         Created: {formatDate(note.createdAt)}
                     </div>
-                    <div className="text-xs text-gray-400">
+                    <div className="text-xs text-black">
                         Updated: {formatDate(note.updatedAt)}
                     </div>
-                    <div className="text-xs text-gray-400 mt-1">
+                    <div className="text-xs text-black mt-1">
                         ID: {note._id.slice(-8)}
                     </div>
                 </div>
             </div>
         </div>
-        
+
         {showEditNote && (
-            <EditNote 
-                note={note} 
-                onClose={() => setShowEditNote(false)} 
+            <EditNote
+                note={note}
+                onClose={() => setShowEditNote(false)}
             />
         )}
     </>
