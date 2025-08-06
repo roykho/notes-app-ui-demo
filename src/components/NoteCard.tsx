@@ -51,10 +51,11 @@ const NoteCard: React.FC<NoteCardProps> = ({ note }) => {
             )}
 
             <div className="mb-4">
-                <h3 className="text-xl font-semibold text-gray-800 mb-2 line-clamp-2">
+                <h3 className="text-xl font-semibold mb-3 line-clamp-2 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
                     {note.title}
                 </h3>
-                <div className="text-gray-600 text-base">
+                <div className="border-b border-gray-200 mb-3"></div>
+                <div className="text-gray-600 text-sm">
                     <p className={`whitespace-pre-wrap ${showFullContent ? '' : 'line-clamp-4'}`}>
                         {note.content}
                     </p>
@@ -98,13 +99,13 @@ const NoteCard: React.FC<NoteCardProps> = ({ note }) => {
                     </button>
                 </div>
                 <div className="text-right">
-                    <div className="text-xs text-black">
+                    <div className="text-xs text-gray-400">
                         Created: {formatDate(note.createdAt)}
                     </div>
-                    <div className="text-xs text-black">
+                    <div className="text-xs text-gray-400">
                         Updated: {formatDate(note.updatedAt)}
                     </div>
-                    <div className="text-xs text-black mt-1">
+                    <div className="text-xs text-gray-400 mt-1">
                         ID: {note._id.slice(-8)}
                     </div>
                 </div>
