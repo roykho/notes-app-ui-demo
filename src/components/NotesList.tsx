@@ -20,13 +20,13 @@ const NotesList = () => {
     if (fetchError) {
         const errorMessage = fetchError.message;
         const isRateLimitError = errorMessage.includes('Too many') || errorMessage.includes('rate limit');
-        
+
         return (
             <div className="container mx-auto px-4 py-6">
                 <div className="col-span-2 text-center py-10">
                     <div className={`inline-block p-4 rounded-lg border ${
-                        isRateLimitError 
-                            ? 'bg-orange-100 border-orange-400 text-orange-700' 
+                        isRateLimitError
+                            ? 'bg-orange-100 border-orange-400 text-orange-700'
                             : 'bg-red-100 border-red-400 text-red-700'
                     }`}>
                         <div className="flex items-center justify-center">
@@ -48,12 +48,17 @@ const NotesList = () => {
         );
     }
 
+    // Sort notes by creation date (newest first) as a fallback
+    const sortedNotes = [...notes].sort((a, b) =>
+        new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+    );
+
     // Show notes or "No notes found"
     return (
         <div className="container mx-auto px-4 py-6">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                {notes.length > 0 ? (
-                    notes.map((note: Note) => (
+                {sortedNotes.length > 0 ? (
+                    sortedNotes.map((note: Note) => (
                         <NoteCard key={note._id} note={note} />
                     ))
                 ) : (
