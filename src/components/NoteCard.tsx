@@ -55,7 +55,7 @@ const NoteCard: React.FC<NoteCardProps> = ({ note }) => {
                     {note.title}
                 </h3>
                 <div className="border-b border-gray-200 mb-3"></div>
-                <div className="text-gray-600 text-sm">
+                <div className="text-gray-600 text-base">
                     <p className={`whitespace-pre-wrap ${showFullContent ? '' : 'line-clamp-4'}`}>
                         {note.content}
                     </p>
@@ -99,13 +99,13 @@ const NoteCard: React.FC<NoteCardProps> = ({ note }) => {
                     </button>
                 </div>
                 <div className="text-right">
-                    <div className="text-xs text-gray-400">
+                    <div className="text-xs text-black">
                         Created: {formatDate(note.createdAt)}
                     </div>
-                    <div className="text-xs text-gray-400">
+                    <div className="text-xs text-black">
                         Updated: {formatDate(note.updatedAt)}
                     </div>
-                    <div className="text-xs text-gray-400 mt-1">
+                    <div className="text-xs text-black mt-1">
                         ID: {note._id.slice(-8)}
                     </div>
                 </div>
