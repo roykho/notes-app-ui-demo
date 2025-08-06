@@ -11,7 +11,7 @@ interface EditNoteProps {
 const EditNote: React.FC<EditNoteProps> = ({ note, onClose }) => {
     const { updateNote } = useNotes();
     const containerRef = useClickOutside(() => onClose());
-    
+
     // Form state management
     const [formData, setFormData] = useState({
         title: '',
@@ -44,13 +44,13 @@ const EditNote: React.FC<EditNoteProps> = ({ note, onClose }) => {
     // Handle form submission
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        
+
         // Validation
         if (!formData.title.trim()) {
             setError('Title is required');
             return;
         }
-        
+
         if (!formData.content.trim()) {
             setError('Note content is required');
             return;
@@ -76,7 +76,7 @@ const EditNote: React.FC<EditNoteProps> = ({ note, onClose }) => {
             onClose();
         } catch (err) {
             const errorMessage = (err as Error).message;
-            
+
             // Check if it's a rate limiting error
             if (errorMessage.includes('Too many') || errorMessage.includes('rate limit')) {
                 setError(`Rate limit exceeded: ${errorMessage}`);
@@ -89,16 +89,16 @@ const EditNote: React.FC<EditNoteProps> = ({ note, onClose }) => {
     };
 
     return (
-        <div className='fixed inset-0 flex items-center justify-center bg-black bg-opacity-40 z-50'>
-            <div ref={containerRef as React.RefObject<HTMLDivElement>} className='bg-white rounded-xl shadow-2xl p-8 w-full max-w-md relative'>
-                <h3 className='text-2xl font-bold text-blue-700 mb-6 text-center'>
+        <div className='fixed inset-0 flex items-center justify-center bg-black bg-opacity-80 z-50'>
+            <div ref={containerRef as React.RefObject<HTMLDivElement>} className='bg-gray-800 rounded-xl shadow-2xl p-8 w-full max-w-md relative'>
+                <h3 className='text-2xl font-bold text-blue-400 mb-6 text-center'>
                     Edit Note
                 </h3>
-                
+
                 {error && (
                     <div className={`mb-4 p-3 border rounded-lg ${
-                        error.includes('Rate limit exceeded') 
-                            ? 'bg-orange-100 border-orange-400 text-orange-700' 
+                        error.includes('Rate limit exceeded')
+                            ? 'bg-orange-100 border-orange-400 text-orange-700'
                             : 'bg-red-100 border-red-400 text-red-700'
                     }`}>
                         <div className="flex items-start">
@@ -121,7 +121,7 @@ const EditNote: React.FC<EditNoteProps> = ({ note, onClose }) => {
                     <div>
                         <label
                             htmlFor='title'
-                            className='block text-sm font-medium text-gray-700 mb-1'
+                            className='block text-sm font-medium text-gray-200 mb-1'
                         >
                             Title <span className="text-red-500">*</span>
                         </label>
@@ -131,7 +131,7 @@ const EditNote: React.FC<EditNoteProps> = ({ note, onClose }) => {
                             name='title'
                             value={formData.title}
                             onChange={handleInputChange}
-                            className='w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition'
+                            className='w-full px-4 py-2 bg-gray-700 border border-gray-600 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition placeholder-gray-400'
                             placeholder='Enter note title'
                             required
                             disabled={isSubmitting}
@@ -140,7 +140,7 @@ const EditNote: React.FC<EditNoteProps> = ({ note, onClose }) => {
                     <div>
                         <label
                             htmlFor='content'
-                            className='block text-sm font-medium text-gray-700 mb-1'
+                            className='block text-sm font-medium text-gray-200 mb-1'
                         >
                             Note <span className="text-red-500">*</span>
                         </label>
@@ -150,7 +150,7 @@ const EditNote: React.FC<EditNoteProps> = ({ note, onClose }) => {
                             value={formData.content}
                             onChange={handleInputChange}
                             rows={4}
-                            className='w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition resize-none'
+                            className='w-full px-4 py-2 bg-gray-700 border border-gray-600 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition resize-none placeholder-gray-400'
                             placeholder='Write your note here...'
                             required
                             disabled={isSubmitting}
@@ -159,7 +159,7 @@ const EditNote: React.FC<EditNoteProps> = ({ note, onClose }) => {
                     <div>
                         <label
                             htmlFor='tags'
-                            className='block text-sm font-medium text-gray-700 mb-1'
+                            className='block text-sm font-medium text-gray-200 mb-1'
                         >
                             Tags
                         </label>
@@ -169,15 +169,15 @@ const EditNote: React.FC<EditNoteProps> = ({ note, onClose }) => {
                             name='tags'
                             value={formData.tags}
                             onChange={handleInputChange}
-                            className='w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition'
+                            className='w-full px-4 py-2 bg-gray-700 border border-gray-600 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition placeholder-gray-400'
                             placeholder='e.g. work, personal, ideas'
                             disabled={isSubmitting}
                         />
-                        <p className='text-xs text-gray-500 mt-1'>
+                        <p className='text-xs text-gray-400 mt-1'>
                             Separate tags with commas
                         </p>
                     </div>
-                    
+
                     <div className='flex gap-3 mt-2'>
                         <button
                             type='submit'
@@ -193,4 +193,4 @@ const EditNote: React.FC<EditNoteProps> = ({ note, onClose }) => {
     );
 };
 
-export default EditNote; 
+export default EditNote;

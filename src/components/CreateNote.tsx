@@ -81,9 +81,9 @@ const CreateNote = () => {
     };
 
     return (
-        <div className='fixed inset-0 flex items-center justify-center bg-black bg-opacity-40 z-50'>
-            <div ref={containerRef as React.RefObject<HTMLDivElement>} className='bg-white rounded-xl shadow-2xl p-8 w-full max-w-md relative'>
-                <h3 className='text-2xl font-bold text-blue-700 mb-6 text-center'>
+        <div className='fixed inset-0 flex items-center justify-center bg-black bg-opacity-80 z-50'>
+            <div ref={containerRef as React.RefObject<HTMLDivElement>} className='bg-gray-800 rounded-xl shadow-2xl p-8 w-full max-w-md relative'>
+                <h3 className='text-2xl font-bold text-blue-400 mb-6 text-center'>
                     Create a New Note
                 </h3>
 
@@ -114,7 +114,7 @@ const CreateNote = () => {
                     <div>
                         <label
                             htmlFor='title'
-                            className='block text-sm font-medium text-gray-700 mb-1'
+                            className='block text-sm font-medium text-gray-200 mb-1'
                         >
                             Title <span className="text-red-500">*</span>
                         </label>
@@ -124,7 +124,7 @@ const CreateNote = () => {
                             name='title'
                             value={formData.title}
                             onChange={handleInputChange}
-                            className='w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition'
+                            className='w-full px-4 py-2 bg-gray-700 border border-gray-600 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition placeholder-gray-400'
                             placeholder='Enter note title'
                             required
                             disabled={isSubmitting}
@@ -133,7 +133,7 @@ const CreateNote = () => {
                     <div>
                         <label
                             htmlFor='content'
-                            className='block text-sm font-medium text-gray-700 mb-1'
+                            className='block text-sm font-medium text-gray-200 mb-1'
                         >
                             Note <span className="text-red-500">*</span>
                         </label>
@@ -143,7 +143,7 @@ const CreateNote = () => {
                             value={formData.content}
                             onChange={handleInputChange}
                             rows={4}
-                            className='w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition resize-none'
+                            className='w-full px-4 py-2 bg-gray-700 border border-gray-600 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition resize-none placeholder-gray-400'
                             placeholder='Write your note here...'
                             required
                             disabled={isSubmitting}
@@ -152,7 +152,7 @@ const CreateNote = () => {
                     <div>
                         <label
                             htmlFor='tags'
-                            className='block text-sm font-medium text-gray-700 mb-1'
+                            className='block text-sm font-medium text-gray-200 mb-1'
                         >
                             Tags
                         </label>
@@ -162,11 +162,11 @@ const CreateNote = () => {
                             name='tags'
                             value={formData.tags}
                             onChange={handleInputChange}
-                            className='w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition'
+                            className='w-full px-4 py-2 bg-gray-700 border border-gray-600 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition placeholder-gray-400'
                             placeholder='e.g. work, personal, ideas'
                             disabled={isSubmitting}
                         />
-                        <p className='text-xs text-gray-500 mt-1'>
+                        <p className='text-xs text-gray-400 mt-1'>
                             Separate tags with commas
                         </p>
                     </div>
@@ -183,7 +183,7 @@ const CreateNote = () => {
                             type='button'
                             onClick={handleReset}
                             disabled={isSubmitting}
-                            className='cursor-pointer px-4 py-2 border border-gray-300 hover:bg-gray-50 disabled:bg-gray-100 text-gray-700 rounded-lg transition-colors'
+                            className='cursor-pointer px-4 py-2 border border-gray-600 hover:bg-gray-700 disabled:bg-gray-700 text-gray-200 rounded-lg transition-colors'
                         >
                             Reset
                         </button>
